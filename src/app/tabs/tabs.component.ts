@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StarWarsService} from '../star-wars.service';
 
 @Component({
@@ -25,6 +25,5 @@ export class TabsComponent implements OnInit {
     this.characters = this.swService.getCharacters(this.chosenList);
     return this.characters;
   }
-
 
 }
