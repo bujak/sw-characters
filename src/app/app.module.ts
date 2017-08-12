@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { StarWarsService } from './star-wars.service';
 import {LogService} from './log.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateCharacterComponent } from './create-character/create-character.co
     CreateCharacterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
