@@ -10,7 +10,12 @@ import {LogService} from './log.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from './header/header.component';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes = [
+  {path: '', component: TabsComponent},
+  {path: 'add', component: CreateCharacterComponent}
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +29,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
