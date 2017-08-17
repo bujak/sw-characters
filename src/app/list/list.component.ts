@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ListComponent implements OnInit {
   @Input() characters;
-  constructor() { }
+  activatedRoute: ActivatedRoute;
+
+  constructor(activatedRoute: ActivatedRoute) {
+    this.activatedRoute = activatedRoute;
+  }
 
   ngOnInit() {
+
   }
 
 }
