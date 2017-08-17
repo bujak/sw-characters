@@ -14,7 +14,8 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes = [
   {path: '', component: TabsComponent},
-  {path: 'add', component: CreateCharacterComponent}
+  {path: 'add', component: CreateCharacterComponent},
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({
