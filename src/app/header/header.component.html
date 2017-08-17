@@ -1,4 +1,9 @@
 <ul class="nav nav-pills">
-  <li role="presentation"><a routerLink="/">Characters</a></li>
-  <li role="presentation"><a routerLink="/add">New character</a></li>
+  <li role="presentation" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/">Characters</a>
+  </li>
+  <li role="presentation" routerLinkActive="active">
+    <a routerLink="/add">New character</a>
+  </li>
 </ul>
