@@ -1,6 +1,7 @@
 import {LogService} from './log.service';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
+import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class StarWarsService {
@@ -9,10 +10,12 @@ export class StarWarsService {
     {name: 'Palpatine', side: ''}
   ];
   private logService: LogService;
+  private http: Http;
   charactersChanged = new Subject<void>();
 
-  constructor(logService: LogService) {
+  constructor(logService: LogService, http: Http) {
     this.logService = logService;
+    this.http = http;
   }
 
   getCharacters(chosenList) {
@@ -22,6 +25,14 @@ export class StarWarsService {
     return this.characters.filter((char) => {
       return char.side === chosenList;
     });
+  }
+
+  fetchCharacters() {
+    this.http.get('http://swapi.co/api/people/').subscribe(
+      (response: Response) => {
+        this.logService.writeLog(response);
+      }
+    );
   }
 
   onSideChosen(charInfo) {
