@@ -2,6 +2,7 @@ import {LogService} from './log.service';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Http, Response} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class StarWarsService {
@@ -28,9 +29,13 @@ export class StarWarsService {
   }
 
   fetchCharacters() {
-    this.http.get('http://swapi.co/api/people/').subscribe(
-      (response: Response) => {
-        this.logService.writeLog(response);
+    this.http.get('http://swapi.co/api/people/')
+      .map((response: Response) => {
+        return response.json();
+      })
+      .subscribe(
+      (data: any) => {
+        this.logService.writeLog(data);
       }
     );
   }
