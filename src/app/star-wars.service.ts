@@ -42,6 +42,7 @@ export class StarWarsService {
       (data: any) => {
         this.characters = data;
         this.logService.writeLog(data);
+        this.charactersChanged.next();
       }
     );
   }
