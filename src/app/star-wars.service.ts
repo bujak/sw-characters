@@ -31,10 +31,16 @@ export class StarWarsService {
   fetchCharacters() {
     this.http.get('http://swapi.co/api/people/')
       .map((response: Response) => {
-        return response.json();
+        const data = response.json();
+        const extractedChars = data.results;
+        const chars = extractedChars.map((char) => {
+          return {name: char.name, side: ''};
+        });
+        return chars;
       })
       .subscribe(
       (data: any) => {
+        this.characters = data;
         this.logService.writeLog(data);
       }
     );
