@@ -10,19 +10,8 @@ import {LogService} from './log.service';
 import {CreateCharacterComponent} from './create-character/create-character.component';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from './header/header.component';
-import {RouterModule, Routes} from '@angular/router';
-import {HttpModule} from "@angular/http";
-
-const routes = [
-  {
-    path: 'characters', component: TabsComponent, children: [
-    {path: '', redirectTo: 'all', pathMatch: 'full'},
-    {path: ':side', component: ListComponent}
-  ]
-  },
-  {path: 'add', component: CreateCharacterComponent},
-  {path: '**', redirectTo: '/characters'}
-];
+import {HttpModule} from '@angular/http';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +25,8 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
